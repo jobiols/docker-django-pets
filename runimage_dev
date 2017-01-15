@@ -1,0 +1,8 @@
+#!/bin/bash
+sudo docker run --rm -it \
+	--link postgres:db \
+	-p 80:80 \
+	-v ~/git-repos/docker-django-pets/django_app:/django_app \
+	--name django \
+	jobiols/django-pets
+
