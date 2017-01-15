@@ -1,0 +1,9 @@
+<!-- obtiene datos de la mascota -->
+
+<p>Para tu {{ guest_data.pet_class }} completá los datos:</p>
+
+<form action="/respuesta/" method="post">
+    {% csrf_token %}
+    {{ guest_data.form.as_ul }}
+    <input type="submit" value="Consultar" />
+</form>

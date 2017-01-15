@@ -1,0 +1,14 @@
+<!-- devuelve los resultados -->
+
+<p>hola, {{ answer.name }}, para su {{ answer.pet_class }}</p>
+
+{% csrf_token %}
+<table>
+{% for line in answer.list %}
+  <tr>
+    <td><p>{{ line }}</p></td>
+    <td>Lastname</td>
+    <td>Age</td>
+  </tr>
+{% endfor %}
+</table>
