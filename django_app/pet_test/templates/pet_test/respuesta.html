@@ -1,4 +1,7 @@
 <!-- devuelve los resultados -->
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'pet_test/base.css' %}" />
 
 <p>hola, {{ answer.name }}, para su {{ answer.pet_class }}</p>
 

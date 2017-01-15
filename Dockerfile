@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 MAINTAINER jobiols <jorge.obiols@gmail.com>
-
+REM Inspirado en http://www.secnot.com/docker-nginx-gunicorn-django.html
 
 # Actualizacion de los 'sources' a la ultima version
 RUN apt-get update

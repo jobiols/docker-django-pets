@@ -1,9 +1,14 @@
 <!-- obtiene datos de la mascota -->
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'pet_test/base.css' %}" />
 
 <p>Para tu {{ guest_data.pet_class }} completá los datos porfi:</p>
 
 <form action="/respuesta/" method="post">
     {% csrf_token %}
-    {{ guest_data.form.as_ul }}
+    <table>
+        {{ guest_data.form.as_table }}
+    </table>
     <input type="submit" value="Consultar" />
 </form>
