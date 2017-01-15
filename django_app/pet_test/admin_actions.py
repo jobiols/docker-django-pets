@@ -47,7 +47,7 @@ class ExportAsXls(admin.ModelAdmin):
         response = HttpResponse(
             output.read(),
             content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-        response['Content-Disposition'] = "attachment; filename=test.xlsx"
+        response['Content-Disposition'] = "attachment; filename=export.xlsx"
         return response
 
     export_as_xls.short_description = "Exportar como planilla excel (xlsx)"
