@@ -2,16 +2,31 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'pet_test/base.css' %}" />
+<style type="text/css">
+  td {
+      vertical-align: middle;
+  }
+</style>
 
-<p>hola, {{ answer.name }}, para su {{ answer.pet_class }}</p>
+
+<p>Hola, {{ answer.name }}, para su {{ answer.pet_class }} te recomendamos</p>
 
 {% csrf_token %}
 <table>
-{% for line in answer.list %}
   <tr>
-    <td><p>{{ line }}</p></td>
-    <td>Lastname</td>
-    <td>Age</td>
+    <td></td>
+    <th>DETALLE</th>
+    <th>SUBRUBRO</th>
+    <th>RUBRO</th>
+    <th>PRECIO</th>
+  </tr>
+{% for rec in answer.ImportedData %}
+  <tr>
+    <td><img src="{{ rec.URLFOTO1 }}" alt="" width="149" height="149" /></td>
+    <td>{{ rec.DETALLE }}</td>
+    <td>{{ rec.SUBRUBRO }}</td>
+    <td>{{ rec.RUBRO }}</td>
+    <td>{{ rec.PRECIO }}</td>
   </tr>
 {% endfor %}
 </table>

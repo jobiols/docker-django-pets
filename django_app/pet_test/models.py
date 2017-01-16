@@ -7,8 +7,9 @@ class UploadedFiles(models.Model):
 
 class Guests(models.Model):
     name = models.CharField(max_length=200)
-    date = models.DateTimeField('date registered')
+    location = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
             return self.name
@@ -36,3 +37,6 @@ class ImportedData(models.Model):
     TITUMELI = models.CharField(max_length=200, blank=True,null=True)
     GRUPO_RECA = models.CharField(max_length=200, blank=True,null=True)
     DESC_LAR = models.CharField(max_length=200, blank=True,null=True)
+
+    def __str__(self):
+            return self.CODIGO
