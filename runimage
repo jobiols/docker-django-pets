@@ -3,5 +3,5 @@ sudo docker run --rm -it \
 	--link postgres:db \
 	-p 80:80 \
 	--name django \
-	jobiols/django-pets:0.1
+	jobiols/django-pets:0.2
 
