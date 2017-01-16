@@ -1,2 +1,2 @@
 #!/bin/bash
-sd build --rm=true -t pets:0.1 ./
+sd build --rm=true -t pets:0.2 ./
