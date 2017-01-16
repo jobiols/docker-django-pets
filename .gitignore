@@ -3,3 +3,4 @@
 __pycache__/
 *.log
 *.xlsx
+django_app/excel_data_file

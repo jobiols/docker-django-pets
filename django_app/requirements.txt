@@ -1,2 +1,4 @@
 Django==1.10.5
-XlsxWriter==0.9.6
+et-xmlfile==1.0.1
+jdcal==1.3
+openpyxl==2.4.1
