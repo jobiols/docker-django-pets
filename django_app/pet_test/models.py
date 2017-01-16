@@ -2,6 +2,7 @@ from django.db import models
 
 class UploadedFiles(models.Model):
     data_file = models.FileField(upload_to='excel_data_file')
+
     def __str__(self):
             return self.data_file
 

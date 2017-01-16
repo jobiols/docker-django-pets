@@ -10,6 +10,9 @@ def index(request):
     return render(request, 'pet_test/index.html', {'form': form})
 
 def get_pet_class(id):
+    """
+    dado el id devuelve el nombre de la clase de perro
+    """
     return 'perro'
 
 def consult(request):
@@ -17,12 +20,14 @@ def consult(request):
         guest_data = {}
         request.session['name'] = request.POST['name']
         # salvar los datos del invitado
+        logger.warning(request.POST)
         g = Guests(name=request.POST['name'],
-                   mail=request.POST['mail'])
+                   location=request.POST['location'],
+                   email=request.POST['email'])
         g.save()
 
         guest_data['name'] = request.POST['name']
-        guest_data['mail'] = request.POST['mail']
+        guest_data['email'] = request.POST['email']
         guest_data['location'] = request.POST['location']
         guest_data['pet_class'] = get_pet_class(request.POST['pet'])
         guest_data['form'] = PetForm()

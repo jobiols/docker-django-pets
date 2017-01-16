@@ -25,8 +25,8 @@ PET_AGE = (
 class GuestForm(forms.Form):
     name = forms.CharField(label='Nombre', max_length=100, required=True)
     location = forms.CharField(label='Localidad', max_length=100, required=True)
-    mail = forms.EmailField(required=True)
-    pet = forms.ChoiceField(choices=PET_CHOICES, label='Mascota')
+    email = forms.EmailField(required=True)
+    pet = forms.ChoiceField(choices=PET_CHOICES, label='Mascota',required=True)
 
 class PetForm(forms.Form):
     raza = forms.ChoiceField(choices=PET_RAZAS, label='Raza')
