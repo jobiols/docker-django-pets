@@ -5,7 +5,7 @@ import logging
 from django.contrib import admin
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 import io
 
 from .admin import ImportedData
@@ -73,7 +73,7 @@ class UploadedFilesAdmin(admin.ModelAdmin):
                     logger.warning('field [%s] [%s]', f.name, f.default)
                 """
                 imp.save()
-                logger.warning('SAVED ----------- %s ',row)
+                logger.warning('SAVED ----------- %s ', row)
 
     process_xls_file.short_description = "Procesar archivo excel"
 
@@ -114,31 +114,34 @@ class GuestsAdmin(admin.ModelAdmin):
         """
         if not request.user.is_staff:
             raise PermissionDenied
-        opts = self.model._meta
-        output = io.BytesIO()
-        wb = Workbook(output, {'in_memory': True})
-        ws0 = wb.add_worksheet()
-        col = 0
+
+        wb = Workbook()
+        ws = wb.active
+        col = 1
         field_names = []
+
         # write header row
+        opts = self.model._meta
         for field in opts.fields:
-            ws0.write(0, col, field.name)
+            ws.cell(row=1, column=col, value=field.name)
             field_names.append(field.name)
-            col = col + 1
-        row = 1
+            col += 1
+
         # Write data rows
+        row = 1
         for obj in queryset:
-            col = 0
+            col = 1
             for field in field_names:
-                #               val = unicode(getattr(obj, field)).strip()
+                # val = unicode(getattr(obj, field)).strip()
                 val = getattr(obj, field)
                 if type(val) == type(datetime.datetime.now()):
                     val = val.date().strftime('%d/%m/%Y')  # replace(tzinfo=None)
-                ws0.write(row, col, val)
-                col = col + 1
-            row = row + 1
+                ws.cell(row=row, column=col, value=val)
+                col += 1
+            row += 1
 
-        wb.close()
+        output = io.BytesIO()
+        wb.save(output)
         output.seek(0)
         response = HttpResponse(
             output.read(),
