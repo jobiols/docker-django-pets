@@ -1,2 +1,2 @@
 #!/bin/bash
-sd build --rm=true -t pets:0.2 ./
+sd build --rm=true -t jobiols/django-pets:0.2 ./

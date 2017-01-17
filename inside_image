@@ -1,0 +1,6 @@
+#!/bin/bash
+#-v /odoo/odoo-8.0/sources:/mnt/extra-addons \
+#
+sudo docker run -it --rm \
+	--entrypoint=/bin/bash \
+        $*

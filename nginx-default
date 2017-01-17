@@ -17,9 +17,8 @@ server {
     keepalive_timeout 5;
 
     # Ruta a tus archivos estaticos.
-    location /static/pet_test/ {
-      autoindex off;
-      alias /django_app/static/;
+    location /static/ {
+      alias /django_app/pet_test/static/pet_test;
     }
 
 
