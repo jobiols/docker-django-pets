@@ -8,6 +8,9 @@ server {
     # listen 80 default accept_filter=httpready; # for FreeBSD
     listen 80 default deferred;
 
+    access_log /django_app/access.log ;
+    error_log /django_app/error.log ;
+
     client_max_body_size 4G;
     server_name localhost;
 
@@ -18,7 +21,7 @@ server {
 
     # Ruta a tus archivos estaticos.
     location /static/ {
-      alias /django_app/pet_test/static/pet_test;
+      alias /django_app/pet_test/static/pet_test/;
     }
 
 

@@ -49,6 +49,9 @@ RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 # Cambiar usuario de root a www-data (por defecto en ubuntu 14.04)
 # RUN echo "user www-data;" >> /etc/nginx/nginx.conf
 
+# agregar logging
+# RUN echo "user www-data;" >> /etc/nginx/nginx.conf
+
 # Permisos
 RUN chown -R www-data:www-data /var/lib/nginx
 
